@@ -1,2 +1,3 @@
+.gitignore
 sketch/build
 sketch/.theia
