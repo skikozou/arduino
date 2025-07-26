@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"io"
+	"strconv"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"github.com/tarm/serial"
@@ -88,6 +90,25 @@ func main() {
 func Writer(ui *LogUI, s *serial.Port) {
 	for {
 		ms := ui.RequestInput("message")
+		if ms == "animation" {
+			Animation(s)
+			continue
+		}
+
 		s.Write([]byte(ms + "\n"))
+	}
+}
+
+func Animation(s *serial.Port) {
+	for i := 0; i < 64; i++ {
+		num := strconv.FormatInt(int64(i), 2)
+		for len(num) < 6 {
+			num = "0" + num
+		}
+
+		cmd := fmt.Sprintf("cube %s", num)
+		s.Write([]byte(cmd + "\n"))
+
+		time.Sleep(100 * time.Millisecond)
 	}
 }
