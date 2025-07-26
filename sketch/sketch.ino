@@ -10,7 +10,7 @@ const int LEDCUBE_C2 = 3;
 const int LEDCUBE_C3 = 4;
 const int LEDCUBE_C4 = 5;
 
-const int CUBE_POINT[6] = {LEDCUBE_C1, LEDCUBE_C2, LEDCUBE_C3, LEDCUBE_C4, LEDCUBE_L1, LEDCUBE_L2};
+const int CUBE_POINT[6] = {LEDCUBE_L2, LEDCUBE_L1, LEDCUBE_C4, LEDCUBE_C3, LEDCUBE_C2, LEDCUBE_C1};
 
 void setup() {
   Serial.begin(9600);
